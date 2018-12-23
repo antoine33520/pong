@@ -2,11 +2,7 @@
 # coding: utf-8
 from tkinter import *
 import random
-<<<<<<< HEAD
 import time
-=======
->>>>>>> 88c7921e84abea9821eed684b0e530fcd2d7aad8
-
 
 vx = 0
 vy = 0
