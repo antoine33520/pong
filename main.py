@@ -2,10 +2,7 @@
 # coding: utf-8
 from tkinter import *
 import random
-<<<<<<< HEAD
 import time
-=======
->>>>>>> 88c7921e84abea9821eed684b0e530fcd2d7aad8
 
 
 vx = 0
@@ -18,8 +15,15 @@ def gameTick():
     fenetre.after(10, gameTick)
 
 
-vx = random.randrange(-2, 3)
-vy = random.randrange(-3, 2)
+# def rebond():
+#     if pos[x] == 0 or pos[x] == 720:
+#         vx = -vx
+#     elif pos[y] == 0 or pos[y] == 1080:
+#         vy = -vy
+
+
+vx = random.choice([-3,3])
+vy = 0
 
 x1 = 510
 y1 = 320
@@ -50,5 +54,6 @@ gauche = canvas.create_line(1081, 720, 1081, 1, fill="red", width=4)
 
 
 gameTick()
+# rebond()
 
 fenetre.mainloop()
