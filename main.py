@@ -4,7 +4,6 @@ from tkinter import *
 import random
 import time
 
-
 vx = 0
 vy = 0
 
