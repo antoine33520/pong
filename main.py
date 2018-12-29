@@ -10,20 +10,29 @@ vy = 0
 
 
 def gameTick():
+    global pos, vx, vy
     canvas.move(ball, vx, vy)
+    pos = canvas.coords(ball)
+    if pos[0] <= 0:
+        vx = v
+        vy = 0
+    elif pos[1] <= 0:
+        vy = v
+    elif pos[2] >= 1080:
+        vx = -vx
+        vy = 0
+    elif pos[3] >= 720:
+        vy = -v
 
     fenetre.after(10, gameTick)
 
 
-# def rebond():
-#     if pos[x] == 0 or pos[x] == 720:
-#         vx = -vx
-#     elif pos[y] == 0 or pos[y] == 1080:
-#         vy = -vy
 
 
-vx = random.choice([-3,3])
-vy = 0
+v = 5
+
+vx = random.choice([-v, v])
+vy = random.randrange(-v, v)
 
 x1 = 510
 y1 = 320
