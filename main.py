@@ -23,6 +23,15 @@ def gameTick():
     elif pos[3] >= 720:
         vy = -v
 
+    r1_pos = canvas.coords(r1)
+    if pos[2] >= r1_pos[0] and pos[0] <= r1_pos[2]:
+        if pos[3] >= r1_pos[1] and pos[3] <= r1_pos[3]:
+            vy = 5
+    r2_pos = canvas.coords(r2)
+    if pos[2] >= r2_pos[0] and pos[0] <= r2_pos[2]:
+        if pos[3] >= r2_pos[1] and pos[3] <= r2_pos[3]:
+            vy = -5
+
     fenetre.after(10, gameTick)
 
 
