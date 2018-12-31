@@ -36,11 +36,23 @@ def gameTick():
 
     canvas.move(ball, vx, vy)
     # Raquette droite
-    if (posb[2] > posr1[0]) and (posb[0] < posr1[2]):
-        vx = -vx
+    if (
+        (posb[2] > posr1[0])
+        and (posb[0] < posr1[2])
+        and (posb[3] > posr1[1])
+        and posb[3] <= posr1[3]
+    ):
+        vx = -v
+        vy = random.randrange(-4, 4, 1)
     # Raquette gauche
-    if (posb[2] > posr2[0]) and (posb[0] < posr2[2]):
-        vx = -vx
+    if (
+        (posb[2] > posr1[0])
+        and (posb[0] < posr1[2])
+        and (posb[3] > posr1[1])
+        and posb[3] <= posr1[3]
+    ):
+        vx = v
+        vy = random.randrange(-4, 4, 1)
 
     fenetre.after(10, gameTick)
 
