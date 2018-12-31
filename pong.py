@@ -43,7 +43,7 @@ def gameTick():
         and (posb[3] < posr1[3])
     ):
         vx = -v
-        vy = random.randrange(-4, 4, 1)
+        vy = random.randrange(-2, 2)
     # Raquette gauche
     if (
         (posb[2] > posr2[0])
@@ -52,27 +52,25 @@ def gameTick():
         and (posb[3] < posr2[3])
     ):
         vx = v
-        vy = random.randrange(-4, 4, 1)
+        vy = random.randrange(-2, 2)
 
     fenetre.after(10, gameTick)
 
 
 # Joueur Droit
 def haut_d(event):
-    canvas.move(r1, 0, -50)
-
+    canvas.move(r1, 0, -80)
 
 def bas_d(event):
-    canvas.move(r1, 0, 50)
+    canvas.move(r1, 0, 80)
 
 
 # Joueur Gauche
 def haut_g(event):
-    canvas.move(r2, 0, -50)
-
+    canvas.move(r2, 0, -80)
 
 def bas_g(event):
-    canvas.move(r2, 0, 50)
+    canvas.move(r2, 0, 80)
 
 
 v = 4
