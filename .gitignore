@@ -1,3 +1,7 @@
 pongtest2.py
 tempCodeRunnerFile.py
 pongtest.py
+
+*.pyc
+
+testpj\.py

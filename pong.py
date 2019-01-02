@@ -4,12 +4,9 @@ from tkinter import *
 import random
 import time
 
-vx = 0
-vy = 0
-
 
 def gameTick():
-    global pos, vx, vy
+    global pos, vx, vy, sj1, sj2, win
     canvas.move(ball, vx, vy)
 
     posb = canvas.coords(ball)
@@ -26,11 +23,13 @@ def gameTick():
 
     # Gauche de la fenêtre
     elif posb[0] < 0:
+        sj1 += 1
         vx = 0
         vy = 0
 
     # Droite de la fenêtre
     elif posb[2] > 1080:
+        sj2 += 1
         vx = 0
         vy = 0
 
@@ -54,12 +53,19 @@ def gameTick():
         vx = v
         vy = random.randrange(-2, 2)
 
+    if sj1 != sj2:
+        print(sj1)
+        print(sj2)
+        win = 1
+        fenetre.quit()
+
     fenetre.after(10, gameTick)
 
 
 # Joueur Droit
 def haut_d(event):
     canvas.move(r1, 0, -80)
+
 
 def bas_d(event):
     canvas.move(r1, 0, 80)
@@ -69,12 +75,17 @@ def bas_d(event):
 def haut_g(event):
     canvas.move(r2, 0, -80)
 
+
 def bas_g(event):
     canvas.move(r2, 0, 80)
 
 
-v = 4
+def quit():
+    print("destroy")
+    fenetre.destroy()
 
+
+v = 4
 vx = random.choice([-v, v])
 vy = random.randrange(-v, v)
 
@@ -83,20 +94,20 @@ y1 = 320
 x2 = 570
 y2 = 370
 
+sj1 = 0
+sj2 = 0
 
 largeur = 1080
 hauteur = 720
 dla = largeur / 2
 dlo = hauteur / 2
 
-
 fenetre = Tk()
 fenetre.title("Pong")
 canvas = Canvas(fenetre, width=largeur, height=hauteur, bg="black")
 canvas.pack()
-Bouton_Quitter = Button(fenetre, text="Quitter", command=fenetre.quit)
+Bouton_Quitter = Button(fenetre, text="Quitter", command=fenetre.destroy)
 Bouton_Quitter.pack()
-
 
 ball = canvas.create_oval(x1, y1, x2, y2, fill="red", tag="ball")
 
