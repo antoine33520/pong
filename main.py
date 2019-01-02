@@ -85,7 +85,7 @@ def quit():
     fenetre.destroy()
 
 
-v = 4
+v = 2
 vx = random.choice([-v, v])
 vy = random.randrange(-v, v)
 
