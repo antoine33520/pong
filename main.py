@@ -8,8 +8,6 @@ import time
 def jeu():
     global pos, vx, vy, sj1, sj2, game
     game = 1
-    sj1 = 0
-    sj2 = 0
 
     def gameTick():
         global pos, vx, vy, sj1, sj2, game
@@ -61,6 +59,11 @@ def jeu():
             vx = v
             vy = random.randrange(-2, 2)
 
+        if game == 0:
+            print(sj1)
+            print(sj2)
+            fermer()
+
         fenetre.after(10, gameTick)
 
     # Joueur Droit
@@ -77,7 +80,17 @@ def jeu():
     def bas_g(event):
         canvas.move(r2, 0, 80)
 
-    v = 4
+    def score():
+        global sj1,sj2
+    tsj1=canvas.create_text(100,100, text=("Score Joueur Gauche", sj1), font=("Comic Sans", 50))
+    tsj2=canvas.create_text(100,100, text=("Score Joueur Gauche", sj2), font=("Comic Sans", 50))
+
+    def fermer():
+        global fenetre
+        fenetre.destroy()
+        jeu()
+
+    v = 2
     vx = random.choice([-v, v])
     vy = random.randrange(-v, v)
 
@@ -86,8 +99,6 @@ def jeu():
     x2 = 570
     y2 = 370
 
-    sj1 = 0
-    sj2 = 0
 
     largeur = 1080
     hauteur = 720
@@ -127,10 +138,11 @@ def jeu():
 
 
 def launch():
-    global win, game
+    global win, game, sj1,sj2
     menup.destroy()
-    while game == 1:
-        jeu()
+    sj1 = 0
+    sj2 = 0
+    jeu()
 
 
 # Menu Principal
