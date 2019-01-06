@@ -109,13 +109,13 @@ def jeu():
         popup.mainloop()
 
     # Vitesses
-    v = 7
-    vx = random.randrange(-v, v)
+    v = vvb
+    vx = v
     vy = random.randrange(-v, v)
-    rd = random.randrange(0, 3)
+    rd = random.randrange(1, 3)
 
     # Nombre de points pour gagner
-    npg = 3
+    npg = vpg
 
     # Emplacement de la balle au démarrage
     x1 = 510
@@ -139,16 +139,16 @@ def jeu():
     Bouton_Quitter.pack()
 
     # Balle
-    ball = canvas.create_oval(x1, y1, x2, y2, fill="red", tag="ball")
+    ball = canvas.create_oval(x1, y1, x2, y2, fill="white", tag="ball")
     # Ligne
     line = canvas.create_line(
         dla, 0, 540, hauteur, fill="white", dash=(20, 10), width=4
     )
 
     # Joueur Droit
-    r1 = canvas.create_rectangle(1050, 260, 1070, 430, fill="red")
+    r1 = canvas.create_rectangle(1050, 260, 1070, 430, fill="white")
     # Joueur Gauche
-    r2 = canvas.create_rectangle(10, 260, 30, 430, fill="red")
+    r2 = canvas.create_rectangle(10, 260, 30, 430, fill="white")
 
     # Commandes Joueurs
     canvas.bind_all("<Up>", haut_d)
@@ -164,10 +164,41 @@ def jeu():
 
 def launch():
     global win, game, sj1, sj2
-    menup.destroy()
+    ecpara.destroy()
     sj1 = 0
     sj2 = 0
     jeu()
+
+
+def ecran_para():
+    global ecpara, vpg, vvb
+
+    menup.destroy()
+
+    ecpara = Tk()
+    ecpara.title("Écran de paramétrage")
+
+    txtpg = Label(
+        ecpara, text="Choisissez le nombres de points nécessaire pour gagner (1 à 10) :"
+    ).grid(row=0, column=0, pady=10)
+    spinpg = Spinbox(ecpara, from_=1, to=10, increment=1)
+    spinpg.grid(row=0, column=1)
+
+    txtvb = Label(ecpara, text="Vitesse de la Balle (4 à 14) :").grid(
+        row=1, column=0, pady=10
+    )
+    spinvb = Spinbox(ecpara, from_=4, to=14, increment=1)
+    spinvb.grid(row=1, column=1)
+
+    def assigne_int():
+        global vpg, vvb
+        vpg = int(spinpg.get())
+        vvb = int(spinvb.get())
+        launch()
+
+    bjouer = Button(ecpara, text="OK", command=assigne_int).grid(row=2, column=0)
+
+    ecpara.mainloop()
 
 
 def menu():
@@ -178,7 +209,7 @@ def menu():
     txtaction = Label(menup, text="Voulez-vous faire une partie de pong").grid(
         row=0, column=1, pady=10
     )
-    bjouer = Button(menup, text="Oui, Jouer", command=launch).grid(row=1, column=0)
+    bjouer = Button(menup, text="Oui, Jouer", command=ecran_para).grid(row=1, column=0)
     bquitter = Button(menup, text="Non, Quitter", command=menup.destroy).grid(
         row=1, column=2
     )
