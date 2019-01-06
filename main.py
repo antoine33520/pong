@@ -207,11 +207,20 @@ def menu():
     txtaction = Label(menup, text="Voulez-vous faire une partie de pong").grid(
         row=0, column=1, pady=10
     )
-    bjouer = Button(menup, text="Oui, Jouer", command=ecran_para).grid(row=1, column=0)
+    bjouer = Button(menup, text="Oui, Jouer", command=ecran_para).grid(row=3, column=2)
     bquitter = Button(menup, text="Non, Quitter", command=menup.destroy).grid(
-        row=1, column=2
+        row=3, column=2
     )
-    txtou = Label(menup, text="ou").grid(row=1, column=1)
+    jdt = Label(menup, text="Commandes du joueur Droit :").grid(row=2, column=0, pady=2)
+    jdc = Label(
+        menup, text="Flèche du haut pour monter / Flèche du bas pour descendre"
+    ).grid(row=2, column=2, pady=2)
+    jgt = Label(menup, text="Commandes du joueur Gauche :").grid(
+        row=1, column=0, pady=2
+    )
+    jgc = Label(menup, text="Touche 'a' pour monter / Touche 'b' pour descendre").grid(
+        row=1, column=2, pady=2
+    )
     menup.mainloop()
 
 
