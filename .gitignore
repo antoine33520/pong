@@ -5,3 +5,5 @@ pongtest.py
 *.pyc
 
 testpj\.py
+.pytest_cache/
+.vscode/settings.json
