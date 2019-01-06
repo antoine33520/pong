@@ -65,10 +65,10 @@ def jeu():
 
             if sj1 == npg:
                 fenetre.destroy()
-                menu()
+                ecran_stats()
             elif sj2 == npg:
                 fenetre.destroy()
-                menu()
+                ecran_stats()
             else:
                 continuer()
 
@@ -97,9 +97,7 @@ def jeu():
 
         popup = Tk()
         popup.title("Continuer ?")
-        label = Label(popup, text="Manche Suivante ?", font=police10).pack(
-            side="top", pady=10
-        )
+        label = Label(popup, text="Manche Suivante ?").pack(side="top", pady=10)
         oui = Button(
             popup, text="Continuer", command=lambda: [popup.destroy(), rejouer()]
         ).pack(side="left")
@@ -217,8 +215,29 @@ def menu():
     menup.mainloop()
 
 
-Police12 = ("Verdana", 12)
-police10 = ("Verdana", 10)
-police8 = ("Verdana", 8)
+def ecran_stats():
+    stats = Tk()
+    stats.title("Écran de statistiques")
+    stattxt = Label(stats, text="STATISTIQUES DE LA PARTIE").grid(row=0)
+    tsj1 = Label(stats, text="Score du Joueur Droit : ").grid(row=1, column=0, pady=5)
+    csj1 = Label(stats, text=sj1).grid(row=1, column=1, pady=5)
+    tsj1 = Label(stats, text="Score du Joueur Gauche : ").grid(row=2, column=0, pady=5)
+    csj1 = Label(stats, text=sj2).grid(row=2, column=1, pady=5)
+    if sj1 > sj2:
+        gagnant = Label(
+            stats, text="Le gagnant de la partie est le joueur de Droite !"
+        ).grid(row=3)
+    elif sj1 < sj2:
+        gagnant = Label(
+            stats, text="Le gagnant de la partie est le joueur de Gauche !"
+        ).grid(row=3)
+
+    Bouton_rejouer = Button(
+        stats, text="Rejouer", command=lambda: [stats.destroy(), launch()]
+    ).grid(row=4, column=0)
+    Bouton_menu = Button(
+        stats, text="Menu", command=lambda: [stats.destroy(), menu()]
+    ).grid(row=4, column=1)
+
 
 menu()
