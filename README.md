@@ -4,6 +4,7 @@
 Jeu d'arcade pong programmé en Python3
 Projet n°2 Première année de Bachelor Informatique au Campus Ynov de Bordeaux 
 Rendu le 06/01/2019 à 23h59
+### Programme non achevé ###
 
 ## Commandes des Joueurs des plateformes (Clavier) :
 
@@ -14,5 +15,3 @@ Rendu le 06/01/2019 à 23h59
 #### Joueur Gauche:
   Pour monter : Touche A
   Pour descendre : Touche Q
-  
-### Programme non achevé ###
