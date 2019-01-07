@@ -207,7 +207,7 @@ def menu():
     txtaction = Label(menup, text="Voulez-vous faire une partie de pong").grid(
         row=0, column=1, pady=10
     )
-    bjouer = Button(menup, text="Oui, Jouer", command=ecran_para).grid(row=3, column=2)
+    bjouer = Button(menup, text="Oui, Jouer", command=ecran_para).grid(row=3, column=1)
     bquitter = Button(menup, text="Non, Quitter", command=menup.destroy).grid(
         row=3, column=2
     )
