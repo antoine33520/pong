@@ -5,7 +5,6 @@ from tkinter import ttk
 import random
 import time
 
-
 def jeu():
     global pos, vx, vy, sj1, sj2, game, fenetre
     game = 1
